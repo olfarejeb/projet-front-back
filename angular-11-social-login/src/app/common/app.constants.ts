@@ -1,7 +1,7 @@
 import { environment } from '../../environments/environment';
 
 export class AppConstants {
-    private static API_BASE_URL = "http://localhost:8080/";
+    private static API_BASE_URL = "http://backend-service:8080/";
     private static OAUTH2_URL = AppConstants.API_BASE_URL + "oauth2/authorization/";
     private static REDIRECT_URL = "?redirect_uri=http://client.devops.com/login";
     public static API_URL = AppConstants.API_BASE_URL + "api/";
