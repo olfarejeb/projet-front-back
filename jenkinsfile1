@@ -29,14 +29,4 @@ pipeline {
               sh 'docker push nacib/backend-spring:v1'
         }
     }
-    //stage('deploy-flaskapi-k8s') {
-      //  steps {
-        //    withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: '',
-         //contextName: '', credentialsId: 'k8s', namespace: '', serverUrl: '']]) {
-        //                  sh 'kubectl apply -f deployment-flaskapp.yaml'
-        //}
-    //}    
-  //}          
-
-  }
-}
+  
