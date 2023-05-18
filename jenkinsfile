@@ -1,0 +1,43 @@
+pipeline {
+  agent any
+  environment {
+      DOCKERHUB_CREDENTIALS = credentials('DockerHub')
+  }
+  stages {
+    stage('Git clone') {
+        steps {
+           git branch: 'main', credentialsId: 'gitlab-jenkins', url: 'git@gitlab.com:Nacib-b/full_stack_springboot_angular.git'
+        }
+    }
+ 
+    stage('Build docker image'){
+        steps {  
+            
+    //      sh 'docker images'
+            sh 'docker build -t nacib/angular:v1 "./angular-11-social-login"'
+        }
+    }
+    
+    
+    stage('docker Login') {
+        steps {
+              sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        }
+    }
+    stage('docker push') {
+        steps {
+              sh 'docker push nacib/angular:v1'
+        }
+    }
+    //stage('deploy-flaskapi-k8s') {
+      //  steps {
+        //    withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: '',
+         //contextName: '', credentialsId: 'k8s', namespace: '', serverUrl: '']]) {
+        //                  sh 'kubectl apply -f deployment-flaskapp.yaml'
+        //}
+    //}    
+  //}          
+
+  }
+}
+
