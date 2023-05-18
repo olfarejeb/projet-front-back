@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:8080/',
-  clientUrl: '?redirect_uri=http://localhost:8080/login'
+  apiBaseUrl: 'http://backend-service:8080/',
+  clientUrl: '?redirect_uri=http://backend-service:8080/login'
 };
 
 /*
